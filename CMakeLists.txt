@@ -1,6 +1,14 @@
 project(Phoenix CXX C)
 
-cmake_minimum_required(VERSION 2.8.12)
+cmake_minimum_required(VERSION 3.1.0 FATAL_ERROR)
+
+# Set application to GUI type for Win32 and MacOS
+if(WIN32)
+  set(GUI_TYPE WIN32)
+endif(WIN32)
+if(APPLE)
+  set(GUI_TYPE MACOSX_BUNDLE)
+endif(APPLE)
 
 # global variables
 set(Phoenix_INCLUDE_DIR
