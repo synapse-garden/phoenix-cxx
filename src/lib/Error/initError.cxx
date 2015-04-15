@@ -1,6 +1,6 @@
 #include <string>
 
-#include "initError.h"
+#include "initError.hpp"
 #include "SDL.h"
 
 using namespace error;
