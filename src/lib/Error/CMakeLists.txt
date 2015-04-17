@@ -9,7 +9,7 @@ add_library(Error STATIC ${Error_SRCS})
 find_package(SDL2 REQUIRED)
 
 target_include_directories(Error PUBLIC
-  ${Phoenix_INCLUDE_DIR}/liberror
+  ${Phoenix_INCLUDE_DIR}/error
   ${SDL2_INCLUDE_DIR}
 )
 

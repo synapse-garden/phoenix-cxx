@@ -3,20 +3,18 @@
 
 #include "SDL.h"
 
-#include "app.h"
+#include "initError.hpp"
+#include "app.hpp"
+#include "sdlUtil.hpp"
+#include "graphics.hpp"
 
 using namespace app;
 
-App::App(std::string titleIn) :
-     title(titleIn) {}
-
-App::~App()
-{
-     delete[] pixels;
-
-     SDL_DestroyTexture(texture);
-     SDL_DestroyRenderer(renderer);
-     SDL_DestroyWindow(window);
-
-     SDL_Quit();
-}
+App::App(const std::string& titleIn) throw (error::InitError) :
+     title(titleIn),
+     sdlUtil(title,
+             SDL_WINDOW_FULLSCREEN | SDL_WINDOW_ALLOW_HIGHDPI |
+             SDL_WINDOW_OPENGL     | SDL_WINDOW_INPUT_GRABBED),
+     graphics(sdlUtil.windowHandle(),
+              sdlUtil.w(), sdlUtil.h())
+{ }
